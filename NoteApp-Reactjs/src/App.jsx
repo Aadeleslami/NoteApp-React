@@ -1,4 +1,4 @@
-import AddNewNote from "./AddNewNote";
+import AddNewNote from "./components/AddNewNote";
 import "./App.css";
 function App() {
   return (
