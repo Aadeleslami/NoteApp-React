@@ -3,15 +3,20 @@ import { useState } from "react";
 function AddNewNote() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newNote ={
       title,
       description,
       id:Date.now(),
-      compelete : false,
+      completed : false,
+      craetedAt :new Date().toISOString(),
     }
-    console.log(newNote);
+    setTitle("");
+    setDescription("");
+    setNote(preveNote => [... preveNote , newNote])
+  
     
   };
   return (
