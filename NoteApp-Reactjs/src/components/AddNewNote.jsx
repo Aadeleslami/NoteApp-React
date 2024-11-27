@@ -15,7 +15,7 @@ function AddNewNote() {
     }
     setTitle("");
     setDescription("");
-    setNote(preveNote => [... preveNote , newNote])
+    setNotes(preveNote => [... preveNote , newNote])
   
     
   };

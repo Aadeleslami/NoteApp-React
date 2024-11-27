@@ -2,7 +2,7 @@ import AddNewNote from "./components/AddNewNote";
 import "./App.css";
 import NoteList from "./components/NoteList";
 function App() {
-  const [note,setNote] = useState([])
+  const [notes,setNotes] = useState([])
   return (
     <div className="container">
         <div className="note-header">note header</div>
