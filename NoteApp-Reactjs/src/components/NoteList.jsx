@@ -1,8 +1,10 @@
 
 
-function NoteList() {
+function NoteList({notes}) {
   return (
-    <div>NoteList</div>
+    <div>
+        <h2>{notes.title}</h2>
+    </div>
   )
 }
 
