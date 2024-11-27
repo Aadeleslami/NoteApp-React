@@ -1,23 +1,21 @@
 import { useState } from "react";
 
-function AddNewNote({setNotes}) {
+function AddNewNote({ onAddNote }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
- 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newNote ={
+    const newNote = {
       title,
       description,
-      id:Date.now(),
-      completed : false,
-      craetedAt :new Date().toISOString(),
-    }
+      id: Date.now(),
+      completed: false,
+      craetedAt: new Date().toISOString(),
+    };
+    onAddNOte(newNote);
     setTitle("");
     setDescription("");
-    setNotes(preveNote => [... preveNote , newNote])
-  
-    
   };
   return (
     <div className="add-new-note">

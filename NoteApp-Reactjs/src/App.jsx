@@ -4,13 +4,16 @@ import NoteList from "./components/NoteList";
 import { useState } from "react";
 function App() {
   const [notes,setNotes] = useState([]);
+  const handleAddNote = () => {
+    setNotes(prevNote => [...prevNote , newNote])
+  }
   return (
     <div className="container">
         <div className="note-header">note header</div>
         <div className="note-app">
-            <AddNewNote setNotes ={setNotes}/>
+            <AddNewNote onAddNote ={handleAddNote} />
             <div className="note-container">
-              <NoteList/>
+              <NoteList notes={notes}/>
             </div>
         </div>
     </div>
