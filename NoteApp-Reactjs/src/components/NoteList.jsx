@@ -1,8 +1,22 @@
 import { IconTrash } from "@tabler/icons-react";
-function NoteList({ notes, onDeleteNote, onCompleted }) {
+function NoteList({ notes, onDeleteNote, onCompleted ,sortBy}) {
+  let sortedNote = notes;
+  if (sortBy === "earliest")
+    sortedNote = [...notes].sort(
+      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+    );
+  if (sortBy === "latest")
+    sortedNote = [...notes].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+
+  if (sortBy === "completed")
+    sortedNote = [...notes].sort(
+      (a, b) => Number(a.completed) - Number(b.completed)
+    );
   return (
     <div className="note-list">
-      {notes.map((note) => (
+      {sortedNote.map((note) => (
         <NoteItem
           key={note.id}
           note={note}

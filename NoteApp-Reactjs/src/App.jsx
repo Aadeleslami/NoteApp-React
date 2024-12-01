@@ -28,21 +28,8 @@ function App() {
     );
   };
 
-  let sortedNote = notes;
-  if (sortBy === "earliest")
-    sortedNote = [...notes].sort(
-      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
-    );
-  if (sortBy === "latest")
-    sortedNote = [...notes].sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
 
-  if (sortBy === "completed")
-    sortedNote = [...notes].sort(
-      (a, b) => Number(a.completed) - Number(b.completed)
-    );
-    console.log(sortedNote);
+ 
     
   return (
     <div className="container">
@@ -56,7 +43,8 @@ function App() {
         <div className="note-container">
           <NoteStatus notes={notes} />
           <NoteList
-            notes={sortedNote}
+            notes={notes}
+            sortBy ={sortBy}
             onDeleteNote={handleDeleteItem}
             onCompleted={handleCompletednote}
           />
