@@ -43,7 +43,7 @@ function NoteItem({ note, onDeleteNote, onCompleted }) {
         </div>
       </div>
       <div className="note-item__footer">
-        {new Date(note.craetedAt).toLocaleDateString("en-US", options)}
+        {new Date(note.createdAt).toLocaleDateString("en-US", options)}
       </div>
     </div>
   );
