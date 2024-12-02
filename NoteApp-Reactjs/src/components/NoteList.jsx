@@ -1,5 +1,5 @@
 import { IconTrash } from "@tabler/icons-react";
-function NoteList({ notes, onDeleteNote, onCompleted ,sortBy}) {
+function NoteList({ notes, onDeleteNote, onCompleted, sortBy }) {
   let sortedNote = notes;
   if (sortBy === "earliest")
     sortedNote = [...notes].sort(
@@ -36,7 +36,7 @@ function NoteItem({ note, onDeleteNote, onCompleted }) {
     day: "numeric",
   };
   return (
-    <div className={`note-item ${note.completed? "completed":""}`}>
+    <div className={`note-item ${note.completed ? "completed" : ""}`}>
       <div className="note-item__header">
         <div>
           <p className="title">{note.title}</p>

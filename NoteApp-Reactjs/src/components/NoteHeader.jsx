@@ -1,7 +1,4 @@
-
-
 function NoteHeader({ notes, sortBy, onSort }) {
-  
   return (
     <div className="note-header">
       <h1>My Course({notes.length})</h1>

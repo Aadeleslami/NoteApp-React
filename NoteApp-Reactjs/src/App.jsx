@@ -28,9 +28,6 @@ function App() {
     );
   };
 
-
- 
-    
   return (
     <div className="container">
       <NoteHeader
@@ -44,7 +41,7 @@ function App() {
           <NoteStatus notes={notes} />
           <NoteList
             notes={notes}
-            sortBy ={sortBy}
+            sortBy={sortBy}
             onDeleteNote={handleDeleteItem}
             onCompleted={handleCompletednote}
           />

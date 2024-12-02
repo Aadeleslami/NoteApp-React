@@ -1,8 +1,16 @@
-function NoteStatus({notes}) {
-    const allNotes = notes.length;
-    const completedNotes = notes.filter(n => n.completed).length;
-    const unCopletedNotes = allNotes - completedNotes
-    if(!allNotes) return <h2>No Notes has already been added.</h2>
+import Message from "./Message";
+
+function NoteStatus({ notes }) {
+  const allNotes = notes.length;
+  const completedNotes = notes.filter((n) => n.completed).length;
+  const unCopletedNotes = allNotes - completedNotes;
+  if (!allNotes)
+    return (
+      <Message>
+        <h1>No Notes has already been added.</h1>
+      </Message>
+    );
+
   return (
     <ul className="note-status">
       <li>
