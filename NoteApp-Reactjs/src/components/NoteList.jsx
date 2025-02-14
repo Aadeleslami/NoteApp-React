@@ -1,5 +1,7 @@
 import { IconTrash } from "@tabler/icons-react";
-function NoteList({ notes, onDeleteNote, onCompleted, sortBy }) {
+import { useNote, useNoteDispatch } from "../context/NoteContext";
+function NoteList({ sortBy }) {
+  const notes = useNote();
   let sortedNote = notes;
   if (sortBy === "earliest")
     sortedNote = [...notes].sort(
@@ -17,19 +19,15 @@ function NoteList({ notes, onDeleteNote, onCompleted, sortBy }) {
   return (
     <div className="note-list">
       {sortedNote.map((note) => (
-        <NoteItem
-          key={note.id}
-          note={note}
-          onDeleteNote={onDeleteNote}
-          onCompleted={onCompleted}
-        />
+        <NoteItem key={note.id} note={note} />
       ))}
     </div>
   );
 }
 
 export default NoteList;
-function NoteItem({ note, onDeleteNote, onCompleted }) {
+function NoteItem({ note }) {
+  const dispatch = useNoteDispatch();
   const options = {
     year: "numeric",
     month: "long",
@@ -43,7 +41,9 @@ function NoteItem({ note, onDeleteNote, onCompleted }) {
           <p className="desc">{note.description}</p>
         </div>
         <div className="actions">
-          <button onClick={() => onDeleteNote(note.id)}>
+          <button
+            onClick={() => dispatch({ type: "delete", payload: note.id })}
+          >
             <IconTrash className="icon" stroke={2} />
           </button>
           <input
@@ -52,7 +52,10 @@ function NoteItem({ note, onDeleteNote, onCompleted }) {
             name={note.id}
             value={note.id}
             checked={note.Completed}
-            onChange={onCompleted}
+            onChange={(e) => {
+              const noteId = Number(e.target.value);
+              dispatch({ type: "complete", payload: noteId });
+            }}
           />
         </div>
       </div>
